@@ -6,7 +6,7 @@
 	 * Cria lê e armazena as palavras num dicionário
 	 */
 	class Dictionary {
-		// Caracters que serão ignorados
+		# Caracters que serão ignorados
 		private $removeChars = array('(', ')', '»', '!', '?', ' es ', ' não ', ' és ', ' tu ', '.', ',', ' - ', '—', ' a ', ' e ', ' i ', ' o ', ' u ', ' de ', ' em ', ' por ', ' os ', ' na ', ' no ', ' não ', ' do ', ' dos ', ' nos ', ' pelo ', ' pelos ', ' à ', ' às ', ' as ', ' aí ', ' é ', ' eles ', ' são ', ' para ', ' da ', ' das ', ' na ', ' nas ', ' pela ', ' pelas ', ' um ', ' uns ', ' dum ', ' duns ', ' num ', ' nuns ', ' uma ', ' umas ', ' duma ', ' dumas ', ' numa ', ' numas ', ' que ', ' eu ', ' você ', ' nós ', ' nos ', ' com ', ' se ', ' já ', ' há ', ' foi ', ' me ', ' meu ', ' seu ', ' nosso ', ' tinha ', ' minha ', ' mais ', ' era ', ' mas ', ' sua ', ' se ', ' mim ', ' ser ', ' ou ', '"');
 		private $maxDocuments;
 
@@ -16,6 +16,7 @@
 
 		/**
 		 * Constrói dicionário de palavras
+		 *
 		 * @return void;
 		 */
 		public function buildDictionary() {
@@ -30,9 +31,10 @@
 						$linha = strtolower(fgets($file, 4096));
 						$linha = $this->cleanString($linha);
 						$textAux = explode(' ', $linha);
-						// concatena as palavras das linhas num array
+
+						# concatena as palavras das linhas num array
 						foreach ($textAux as $value) {
-							if (strlen($value) > 2) { // descarta artigos ou letras que sobraram com 2 ou 1 letra
+							if (strlen($value) > 2) { # descarta artigos ou letras que sobraram com 2 ou 1 letra
 								$allWordsOfThisDoc[] = $value;
 							}
 						}
@@ -48,6 +50,7 @@
 
 		/**
 		 * Lê vários txts no formato file . $i . txt
+		 *
 		 * @return array $allWords
 		 */
 		private function readTXT() {
@@ -59,9 +62,10 @@
 					$linha = str_replace($this->removeChars, ' ', $linha);
 					$linha = $this->cleanString($linha);
 					$textAux = explode(' ', $linha);
-					// concatena as palavras das linhas num array
+					
+					# concatena as palavras das linhas num array
 					foreach ($textAux as $value) {
-						if (strlen($value) > 2) { // descarta artigos ou letras que sobraram com 2 ou 1 letra
+						if (strlen($value) > 2) { # descarta artigos ou letras que sobraram com 2 ou 1 letra
 							$allWords[] = $value;
 						}
 					}

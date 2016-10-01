@@ -26,7 +26,7 @@
 		public function searchAND2Words($search) {
 			$result = NULL;
 			for ($i = 1; $i <= $this->maxDocuments; $i++) {
-				// se as 2 palavras existem no documento, Doc . $i = 1
+				# se as 2 palavras existem no documento, Doc . $i = 1
 				if ((isset($this->dictionaryWords[$search[0]]['Doc' . $i]) && (isset($this->dictionaryWords[$search[2]]['Doc' . $i])))) {
 					$result['Doc' . $i] = 1;
 				}
@@ -44,7 +44,7 @@
 		public function searchOR2Words($search) {
 			$result = NULL;
 			for ($i = 1; $i <= $this->maxDocuments; $i++) {
-				// se pelo menos uma das palavras existem no documento, Doc . $i = 1
+				# se pelo menos uma das palavras existem no documento, Doc . $i = 1
 				if (isset($this->dictionaryWords[$search[0]]['Doc' . $i])) {
 					$result['Doc' . $i] = 1;
 				} else if (isset($this->dictionaryWords[$search[2]]['Doc' . $i])) {
@@ -63,9 +63,9 @@
 		 */
 		public function searchNOT2Words($search) {
 			$result = NULL;
-			// se palavra 1 existe no documento, e palavra 2 não
+			# se palavra 1 existe no documento, e palavra 2 não
 			for ($i = 1; $i <= $this->maxDocuments; $i++) {
-				// se palavra 1 existe no documento $i, mas palavra 2 não, Doc . $i = 1
+				# se palavra 1 existe no documento $i, mas palavra 2 não, Doc . $i = 1
 				if (isset($this->dictionaryWords[$search[0]]['Doc' . $i]) && !isset($this->dictionaryWords[$search[2]]['Doc' . $i])) {
 					$result['Doc' . $i] = 1;
 				}
@@ -82,9 +82,9 @@
 		 */
 		public function searchNOT1Word($search) {
 			$result = NULL;
-			// se palavra 1 não existe no documento
+			# se palavra 1 não existe no documento
 			for ($i = 1; $i <= $this->maxDocuments; $i++) {
-				// se palavra 1 existe no documento $i, mas palavra 2 não, Doc . $i = 1
+				# se palavra 1 existe no documento $i, mas palavra 2 não, Doc . $i = 1
 				if (!isset($this->dictionaryWords[$search[1]]['Doc' . $i])) {
 					$result['Doc' . $i] = 1;
 				}
@@ -102,7 +102,7 @@
 		public function searchAND3Words($search) {
 			$result = NULL;
 			for ($i = 1; $i <= $this->maxDocuments; $i++) {
-				// se pelo menos uma das palavras existem no documento, Doc . $i = 1
+				# se pelo menos uma das palavras existem no documento, Doc . $i = 1
 				if (isset($this->dictionaryWords[$search[0]]['Doc' . $i]) && isset($this->dictionaryWords[$search[2]]['Doc' . $i]) && isset($this->dictionaryWords[$search[4]]['Doc' . $i])) {
 					$result['Doc' . $i] = 1;
 				}
@@ -120,7 +120,7 @@
 		public function searchOR3Words($search) {
 			$result = NULL;
 			for ($i = 1; $i <= $this->maxDocuments; $i++) {
-				// se pelo menos uma das palavras existem no documento, Doc . $i = 1
+				# se pelo menos uma das palavras existem no documento, Doc . $i = 1
 				if (isset($this->dictionaryWords[$search[0]]['Doc' . $i]) || isset($this->dictionaryWords[$search[2]]['Doc' . $i]) || isset($this->dictionaryWords[$search[4]]['Doc' . $i])) {
 					$result['Doc' . $i] = 1;
 				}
@@ -138,7 +138,7 @@
 		public function searchNOT3Words($search) {
 			$result = NULL;
 			for ($i = 1; $i <= $this->maxDocuments; $i++) {
-				// se existe palavra1, mas não existem palavra2 e nem palavra3
+				# se existe palavra1, mas não existem palavra2 e nem palavra3
 				if (isset($this->dictionaryWords[$search[0]]['Doc' . $i]) && !isset($this->dictionaryWords[$search[2]]['Doc' . $i]) && !isset($this->dictionaryWords[$search[4]]['Doc' . $i])) {
 					$result['Doc' . $i] = 1;
 				}
@@ -156,7 +156,7 @@
 		public function searchNotWord2Times($search) {
 			$result = NULL;
 			for ($i = 1; $i <= $this->maxDocuments; $i++) {
-				// se não existe nenhuma das 2 palavras
+				# se não existe nenhuma das 2 palavras
 				if ($search[0] == 'not' && $search[2] == 'not' && $search[1] != 'not' && $search[3] != 'not' && !isset($this->dictionaryWords[$search[1]]['Doc' . $i]) && !isset($this->dictionaryWords[$search[3]]['Doc' . $i])) {
 					$result['Doc' . $i] = 1;
 				}
@@ -174,7 +174,7 @@
 		public function searchAndOr3Words($search) {
 			$result = NULL;
 			for ($i = 1; $i <= $this->maxDocuments; $i++) {
-				// se (palavra1 and palavra2) or palavra3
+				# se (palavra1 and palavra2) or palavra3
 				if ((isset($this->dictionaryWords[$search[0]]['Doc' . $i]) && isset($this->dictionaryWords[$search[2]]['Doc' . $i])) || isset($this->dictionaryWords[$search[4]]['Doc' . $i])) {
 					$result['Doc' . $i] = 1;
 				}
@@ -192,7 +192,7 @@
 		public function searchAndNot3Words($search) {
 			$result = NULL;
 			for ($i = 1; $i <= $this->maxDocuments; $i++) {
-				// se (palavra1 and palavra2) not palavra3
+				# se (palavra1 and palavra2) not palavra3
 				if (isset($this->dictionaryWords[$search[0]]['Doc' . $i]) && isset($this->dictionaryWords[$search[2]]['Doc' . $i]) && !isset($this->dictionaryWords[$search[4]]['Doc' . $i])) {
 					$result['Doc' . $i] = 1;
 				}
@@ -210,7 +210,7 @@
 		public function searchOrAnd3Words($search) {
 			$result = NULL;
 			for ($i = 1; $i <= $this->maxDocuments; $i++) {
-				// se (palavra1 and palavra2) or palavra3
+				# se (palavra1 and palavra2) or palavra3
 				if ((isset($this->dictionaryWords[$search[0]]['Doc' . $i]) || isset($this->dictionaryWords[$search[2]]['Doc' . $i])) && isset($this->dictionaryWords[$search[4]]['Doc' . $i])) {
 					$result['Doc' . $i] = 1;
 				}
@@ -228,7 +228,7 @@
 		public function searchOrNot3Words($search) {
 			$result = NULL;
 			for ($i = 1; $i <= $this->maxDocuments; $i++) {
-				// se (palavra1 and palavra2) not palavra3
+				# se (palavra1 and palavra2) not palavra3
 				if ((isset($this->dictionaryWords[$search[0]]['Doc' . $i]) || isset($this->dictionaryWords[$search[2]]['Doc' . $i])) && !isset($this->dictionaryWords[$search[4]]['Doc' . $i])) {
 					$result['Doc' . $i] = 1;
 				}
@@ -246,7 +246,7 @@
 		public function searchNotAnd2Words($search) {
 			$result = NULL;
 			for ($i = 1; $i <= $this->maxDocuments; $i++) {
-				// se (not palavra1 and palavra2)
+				# se (not palavra1 and palavra2)
 				if ((!isset($this->dictionaryWords[$search[1]]['Doc' . $i]) && isset($this->dictionaryWords[$search[3]]['Doc' . $i]))) {
 					$result['Doc' . $i] = 1;
 				}
@@ -264,7 +264,7 @@
 		public function searchNotOr2Words($search) {
 			$result = NULL;
 			for ($i = 1; $i <= $this->maxDocuments; $i++) {
-				// se (not palavra1 and palavra2)
+				# se (not palavra1 and palavra2)
 				if ((!isset($this->dictionaryWords[$search[1]]['Doc' . $i]) || isset($this->dictionaryWords[$search[3]]['Doc' . $i]))) {
 					$result['Doc' . $i] = 1;
 				}
